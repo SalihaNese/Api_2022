@@ -35,8 +35,8 @@ public class C02_Get_ResponseBilgileriAssertion {
         response.prettyPrint(); // bu sorguyu terminale yazdirir
 
         response.
-                then().
-                assertThat().
+                then().// Then'e ait olan methodlar gelir ve en cok kullanacagımız assertThat method'u dur
+                assertThat(). // bunun ile assert edecez
                 statusCode(200).
                 contentType("application/json; charset=utf-8").
                 header("server" ,"Cowboy").statusLine("HTTP/1.1 200 OK");

@@ -57,11 +57,14 @@ public class C14_Put_SoftAssertIleExpectedDataTesti {
          */
         JSONObject data = new JSONObject();
         JSONObject reqBody = new JSONObject();
-        data.put("name","Ahmet");
+
+        data.put("name","Ahmet");// icten basladık data nın cocukları bunlar
         data.put("salary","1230");
         data.put("age","44");
         data.put("id",40);
-        reqBody.put("data",data);
+
+        reqBody.put("data",data);//data objesiyle olusturdugumuz degerleri reqbody icine yerlestırdım
+                                    // ictekileri dıs ile tanıstırdık
         reqBody.put("status","success");
         // 2 - Expected Data hazirla
         /*
@@ -82,22 +85,23 @@ public class C14_Put_SoftAssertIleExpectedDataTesti {
 
         JSONObject expData = new JSONObject();
         expData.put("status","success");
-        expData.put("data",reqBody);
+        expData.put("data",reqBody);//request Body icine zaten tanımladık direkt ismini yazdık
         expData.put("message","Successfully! Record has been updated.");
 
         // 3 - Response'u kaydet
         Response response = given().
                 contentType(ContentType.JSON).
                 when().
-                body(reqBody.toString()).
+                body(reqBody.toString()).// islemimiz put oldugu icin body olması gerekıyor
                 put(url);
+
         response.prettyPrint();
 
         // 4 - Assertion
 
         JsonPath respJP = response.jsonPath();
-
         SoftAssert softAssert = new SoftAssert();
+
         softAssert.assertEquals(respJP.get("status"), expData.get("status"));
         softAssert.assertEquals(respJP.get("message"), expData.get("message"));
         softAssert.assertEquals(respJP.get("data.data.name"),expData.getJSONObject("data").getJSONObject("data").get("name"));

@@ -38,7 +38,7 @@ public class C13_Get_SoftAssertIleExpectedDataTesti {
         JSONObject expBody = new JSONObject();
 
         data.put("id",3);
-        data.put("employee_name","Ashton Cox");
+        data.put("employee_name","Ashton Cox");  // Burası ic format data+nın cocukları,burası ic kısmı inner yani
         data.put("employee_salary",86000);
         data.put("employee_age",66);
         data.put("profile_image","");
@@ -49,7 +49,7 @@ public class C13_Get_SoftAssertIleExpectedDataTesti {
         System.out.println("expBody = " + expBody);
 
         // 3 - Response' u kaydet
-        Response response = given().when().get(url);
+        Response response = given().when().get(url);//get islemini url ile yap diyorum
 
         response.prettyPrint();
 
@@ -58,6 +58,7 @@ public class C13_Get_SoftAssertIleExpectedDataTesti {
         JsonPath respJP = response.jsonPath();
 
         SoftAssert softAssert = new SoftAssert();
+
         softAssert.assertEquals(respJP.get("status"),expBody.get("status"));
         softAssert.assertEquals(respJP.get("data.id"),expBody.getJSONObject("data").get("id"));
         softAssert.assertEquals(respJP.get("data.employee_name"),expBody.getJSONObject("data").get("employee_name"));
@@ -66,11 +67,11 @@ public class C13_Get_SoftAssertIleExpectedDataTesti {
         softAssert.assertEquals(respJP.get("data.profile_image"),expBody.getJSONObject("data").get("profile_image"));
         softAssert.assertEquals(respJP.get("message"),expBody.get("message"));
 
-        softAssert.assertAll();
+        softAssert.assertAll(); // assert islemlerini yap emri vermek icin bunu yazmalıyız
 
     }
 
-
+ // cocugu varsa . deyıp cocugu yazıyoruz yani data.id, data.employee_name gibi
 
 
 }

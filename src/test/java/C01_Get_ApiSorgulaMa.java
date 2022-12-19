@@ -10,10 +10,12 @@ public class C01_Get_ApiSorgulaMa {
    /*
         https://restful-booker.herokuapp.com/booking/247336 url’ine
         bir GET request gonderdigimizde donen Response’un,
+
         status code’unun 200,
         ve content type’inin application/json; charset=utf-8,
         ve Server isimli Header’in degerinin Cowboy,
         ve status Line’in HTTP/1.1 200 OK
+
         ve response suresinin 5 sn’den kisa oldugunu manuel olarak test ediniz.
          */
 
@@ -39,7 +41,7 @@ public class C01_Get_ApiSorgulaMa {
 
             // 1 - Request icin Url ve Body hazirla
             String url = "https://jsonplaceholder.typicode.com/posts/70";
-            JSONObject reqBody = new JSONObject();
+        JSONObject reqBody = new JSONObject();
 
 
         /* {
