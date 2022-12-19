@@ -18,9 +18,9 @@ public class C03_JsonObjesiOlusturma {
     "body":"Merhaba",
     "userId":1
     }
-
      */
-        JSONObject ilkJSONObje = new JSONObject();
+
+        JSONObject ilkJSONObje = new JSONObject(); // icine koyacagımız degerleri tek tek put ile koyacagız
 
         ilkJSONObje.put("title", "ahmet");
         ilkJSONObje.put("body" , "Merhaba");
@@ -47,10 +47,10 @@ public class C03_JsonObjesiOlusturma {
                   }
          */
 
-        JSONObject innerJson = new JSONObject();
-
-        innerJson.put("checkin" ,"2018-01-01");
+        JSONObject innerJson = new JSONObject();// burda ictekini olusturduk
+        innerJson.put("checkin" ,"2018-01-01");//once icteki json'ı olusturduk ,buyuk json olustururken direkt objenin ismini yazdık
         innerJson.put("checkout" ,"2019-01-01");
+
 
         JSONObject body = new JSONObject();
         body.put("firstname","Jim");
