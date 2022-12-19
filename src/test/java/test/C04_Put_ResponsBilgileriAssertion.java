@@ -31,6 +31,7 @@ public class C04_Put_ResponsBilgileriAssertion {
         // 1 - Request icin Url ve Body hazirla
         String url = "https://jsonplaceholder.typicode.com/posts/70";
         JSONObject reqBody = new JSONObject(); // bu sekilde body olusturulur
+
         /* {
                   "id" : 1,
                    "title": "Cemile",
@@ -38,20 +39,23 @@ public class C04_Put_ResponsBilgileriAssertion {
                    "userId": 3
                 }
          */
+
         reqBody.put("title","Cemile");
         reqBody.put("body","Bardak");
         reqBody.put("userId",3);
         reqBody.put("id",1);
+
         System.out.println(reqBody);
 
         // 2 - Expected Data hazirla
 
         // 3 - Response kaydet
         Response response = given().
-                contentType(ContentType.JSON).
-                when().
-                body(reqBody.toString()).
-                put(url);
+                               contentType(ContentType.JSON).
+                        when().
+                            body(reqBody.toString()).// body'i hazirladıgımıx obje uzerinden
+                      put(url);                         // toString ile gondermeliyiz yoksa hata verir
+
         response.prettyPrint();
 
         // 4 - Assertion

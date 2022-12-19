@@ -31,9 +31,10 @@ public class C5_Get_ResponseBodyTesti {
         String url = "https://jsonplaceholder.typicode.com/posts/44";
 
         // 2- Soruda verilmisse expected datayı hazırlayacagız
-        // 3- Donen response kaydet
 
-        Response response= given().when().get(url);
+        // 3- (Donen) Response' u kaydet
+
+        Response response= given().when().get(url);// body kullansaydık contenttype'i gonderecektık
        // response.prettyPrint(); Bu yazdirma teste yazdirma olmaz
 
         // 4- Assertion
@@ -43,6 +44,7 @@ public class C5_Get_ResponseBodyTesti {
                 assertThat().
                 statusCode(200).
                 contentType(ContentType.JSON).
+                body("userId",Matchers.equalTo(5)).
                 body("title", Matchers.equalTo("optio dolor molestias sit"));
 
     }
