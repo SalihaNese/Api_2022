@@ -4,13 +4,14 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.*;  // burdakı yıldız Matchers classdan herseyı import et diyoruz
 public class C7_Get_BodyTekrarlardanKurtulma{
 
 
     /*
                     https://restful-booker.herokuapp.com/booking/14018 url’ine
                     bir GET request gonderdigimizde donen Response’un,
+
                     status code’unun 200,
                     ve content type’inin application-json,
                     ve response body’sindeki

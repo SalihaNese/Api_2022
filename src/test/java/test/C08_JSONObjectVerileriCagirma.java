@@ -62,6 +62,8 @@ public class C08_JSONObjectVerileriCagirma {
         System.out.println("Yas : " + kisiBilgisi.get("age"));
 
         System.out.println("Sehir : " + kisiBilgisi.getJSONObject("address").get("city"));
+        // kisibilgisine git onun icerisindeki adress isimli Json objeyi getir,
+        // onun da icindeki city isimli key degeri bana getir diyoruz
         System.out.println("Posta Kodu : " + kisiBilgisi.getJSONObject("address").get("postalCode"));
         System.out.println("Sokak adi : " + kisiBilgisi.getJSONObject("address").get("streetAddress"));
         System.out.println("Cep Tel : " + kisiBilgisi.
@@ -73,6 +75,7 @@ public class C08_JSONObjectVerileriCagirma {
                                                             getJSONArray("phoneNumbers").
                                                             getJSONObject(1).
                                                             get("type") );
+
 
         /*
 

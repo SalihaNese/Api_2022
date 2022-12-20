@@ -12,11 +12,13 @@ public class C6_Post_ResponseBodyTesti {
 
     /*  https://jsonplaceholder.typicode.com/posts
          url’ine asagidaki body ile bir POST request gonderdigimizde
+
         {
         "title":"API",
         "body":"API ogrenmek ne guzel",
         "userId":10,
         }
+
         donen Response’un,
 
         status code’unun 201,
@@ -34,6 +36,15 @@ public class C6_Post_ResponseBodyTesti {
         // 1- Request Url ve Body olustur
         String url = "https://jsonplaceholder.typicode.com/posts";
 
+       /*
+           {
+            "title":"API",
+                "body":"API ogrenmek ne guzel",
+                "userId":10,
+           }
+        */
+    // once bu body'i olusturalım JSONObject'ten ve adını reqBody diye olusturuyorduk
+
         JSONObject reqBody = new JSONObject();
 
         reqBody.put("title","API");
@@ -42,13 +53,17 @@ public class C6_Post_ResponseBodyTesti {
         //System.out.println(reqBody);
 
         // 2 - Soruda verilmisse Expected Data hazirla
+
         // 3 - Response 'u kaydet
+
         Response response = given().
                 contentType(ContentType.JSON).
                 when().
-                body(reqBody.toString()).
+                body(reqBody.toString()).// yukarıda reqBody'i toString olarak icine koyacaz
                 post(url);
         //response.prettyPrint();
+
+
         // 4 - Assertion
         response.
                 then().
@@ -58,6 +73,10 @@ public class C6_Post_ResponseBodyTesti {
                 body("title", Matchers.equalTo("API")).
                 body("userId",Matchers.lessThan(100)).
                 body("body",Matchers.containsString("API"));
+
+
+        // Response uzerinden assertion yaparkenbody ile ilgili bir assertion yaptıgımızda
+        //Matchers class'indan yardım almak zorundayız
     }
     }
 

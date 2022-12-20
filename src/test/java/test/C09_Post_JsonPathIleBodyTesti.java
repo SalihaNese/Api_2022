@@ -46,6 +46,7 @@ public class C09_Post_JsonPathIleBodyTesti {
 
         JSONObject innerBody = new JSONObject();
         JSONObject reqBody = new JSONObject();
+
         innerBody.put("checkin","2021-06-01");
         innerBody.put("checkout","2021-06-10");
         reqBody.put("firstname" , "Ali");
