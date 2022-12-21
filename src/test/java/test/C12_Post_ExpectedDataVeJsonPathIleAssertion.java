@@ -47,6 +47,7 @@ public class C12_Post_ExpectedDataVeJsonPathIleAssertion {
 
     @Test
     public void post01(){
+
         // 1 - Request URL ve Body hazirla
         String url = "https://restful-booker.herokuapp.com/booking";
         JSONObject innerBody = new JSONObject();
