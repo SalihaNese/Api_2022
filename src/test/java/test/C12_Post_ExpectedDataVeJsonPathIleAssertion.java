@@ -52,8 +52,10 @@ public class C12_Post_ExpectedDataVeJsonPathIleAssertion {
         String url = "https://restful-booker.herokuapp.com/booking";
         JSONObject innerBody = new JSONObject();
         JSONObject reqBody = new JSONObject();
+
         innerBody.put("checkin","2021-06-01");
         innerBody.put("checkout","2021-06-10");
+
         reqBody.put("firstname" , "Ali");
         reqBody.put("lastname" , "Bak");
         reqBody.put("totalprice" , 500);
@@ -65,6 +67,7 @@ public class C12_Post_ExpectedDataVeJsonPathIleAssertion {
         JSONObject bookingdates = new JSONObject();
         JSONObject booking = new JSONObject();
         JSONObject expBody = new JSONObject();
+
         bookingdates.put("checkin","2021-06-01");
         bookingdates.put("checkout","2021-06-10");
         booking.put("firstname" , "Ali");
@@ -73,16 +76,18 @@ public class C12_Post_ExpectedDataVeJsonPathIleAssertion {
         booking.put("depositpaid" ,false);
         booking.put("bookingdates" , innerBody);
         booking.put("additionalneeds" , "wi-fi");
-        expBody.put("bookingid",24);
+
+        expBody.put("bookingid",24);// en dıstakinin adı expected body
         expBody.put("booking",booking);
 
         // 3 - Response ' u kaydet
         Response response = given().contentType(ContentType.JSON).when().body(reqBody.toString()).post(url);
+
         response.prettyPrint();
 
         // 4 - Assertion
 
-        JsonPath resJS = response.jsonPath();
+        JsonPath resJS = response.jsonPath();// Assert'in icinde kullanmak icin response'musu Jsonpath'e donusturuyoruz
 
         assertEquals("Booking firstname calismadi",expBody.getJSONObject("booking").get("firstname"),resJS.get("booking.firstname"));
         assertEquals("Booking lastname calismadi",expBody.getJSONObject("booking").get("lastname"),resJS.get("booking.lastname"));
@@ -92,4 +97,9 @@ public class C12_Post_ExpectedDataVeJsonPathIleAssertion {
         assertEquals("Booking - bookingdates checkin calismadi",expBody.getJSONObject("booking").getJSONObject("bookingdates").get("checkin"),resJS.get("booking.bookingdates.checkin"));
         assertEquals("Booking - bookingdates checkout calismadi",expBody.getJSONObject("booking").getJSONObject("bookingdates").get("checkout"),resJS.get("booking.bookingdates.checkout"));
     }
+
+    // Basına , koyarak mesaj ekleyebiliriz "Booking firstname calismadi" gibi
 }
+
+// Json Obje'deki bilgilere ulasmak icin tek tekalmamız gerekıyor fakat
+// Jsonpath şyle degıl (.)nokta koyarak hallediyoruz

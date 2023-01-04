@@ -13,18 +13,20 @@ public class C13_Get_SoftAssertIleExpectedDataTesti {
     /*
     http://dummy.restapiexample.com/api/v1/employee/3 url’ine bir GET request
     gonderdigimizde donen response’un asagidaki gibi oldugunu test edin.
+
     Response Body
-    {
-    "status":"success",
-    "data":{
-    "id":3,
-    "employee_name":"Ashton Cox",
-    "employee_salary":86000,
-    "employee_age":66,
-    "profile_image":""
-    },
+            {
+            "status":"success",
+            "data":{
+                    "id":3,
+                    "employee_name":"Ashton Cox",
+                    "employee_salary":86000,
+                    "employee_age":66,
+                    "profile_image":""
+            },
     "message":"Successfully! Record has been fetched."
     }
+
      */
     @Test
     public void get01(){
@@ -34,8 +36,8 @@ public class C13_Get_SoftAssertIleExpectedDataTesti {
         String url = "http://dummy.restapiexample.com/api/v1/employee/3";
 
         // 2 - Expected Data hazirla
-        JSONObject data = new JSONObject();
-        JSONObject expBody = new JSONObject();
+        JSONObject data = new JSONObject();  // 2tane JsonObje oldugu icin sorguda 2 tane obje olusturuyorum
+        JSONObject expBody = new JSONObject(); // expBody dısta olan
 
         data.put("id",3);
         data.put("employee_name","Ashton Cox");  // Burası ic format data+nın cocukları,burası ic kısmı inner yani
@@ -49,7 +51,7 @@ public class C13_Get_SoftAssertIleExpectedDataTesti {
         System.out.println("expBody = " + expBody);
 
         // 3 - Response' u kaydet
-        Response response = given().when().get(url);//get islemini url ile yap diyorum
+        Response response = given().when().get(url);//get islemini url ile yap diyorum ,APİ baglantımı kuruyorum boyle
 
         response.prettyPrint();
 

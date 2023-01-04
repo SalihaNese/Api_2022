@@ -11,6 +11,7 @@ public class C14_Put_SoftAssertIleExpectedDataTesti {
     /*
    http://dummy.restapiexample.com/api/v1/update/21 url’ine asagidaki
    body’ye sahip bir PUT request gonderdigimizde donen response’un asagidaki gibi oldugunu test edin.
+
            Request Body
            {
                "status":"success",
@@ -21,6 +22,7 @@ public class C14_Put_SoftAssertIleExpectedDataTesti {
                        "id":40
                        }
            }
+
            Response Body
            {
            "status":"success",
@@ -66,8 +68,12 @@ public class C14_Put_SoftAssertIleExpectedDataTesti {
         reqBody.put("data",data);//data objesiyle olusturdugumuz degerleri reqbody icine yerlestırdım
                                     // ictekileri dıs ile tanıstırdık
         reqBody.put("status","success");
+
+
         // 2 - Expected Data hazirla
+
         /*
+
         {
             "status":"success",
             "data":{
@@ -83,17 +89,20 @@ public class C14_Put_SoftAssertIleExpectedDataTesti {
             }
          */
 
+
         JSONObject expData = new JSONObject();
+
+
         expData.put("status","success");
-        expData.put("data",reqBody);//request Body icine zaten tanımladık direkt ismini yazdık
+        expData.put("data",reqBody); //request Body icine zaten tanımladık direkt ismini yazdık
         expData.put("message","Successfully! Record has been updated.");
 
         // 3 - Response'u kaydet
         Response response = given().
-                contentType(ContentType.JSON).
-                when().
-                body(reqBody.toString()).// islemimiz put oldugu icin body olması gerekıyor
-                put(url);
+                                    contentType(ContentType.JSON).
+                            when().
+                                    body(reqBody.toString()).// islemimiz put oldugu icin body olması gerekıyor
+                                    put(url);
 
         response.prettyPrint();
 
